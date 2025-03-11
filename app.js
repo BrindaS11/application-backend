@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// api routes
+//routes
 app.use('/api/v1/app/auth', authRouter);
 app.use('/api/v1/app/users', usersRouter);
 app.use('/api/v1/app/address', addressRouter);
