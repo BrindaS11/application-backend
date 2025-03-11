@@ -1,28 +1,9 @@
-const mongoose = require("mongoose");
-
-const UserSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        required: [true, "Please provide a unique emp_id"],
-    },
-    password: {
-        type: String,
-        required: [true, "Please provide a password"],
-    },
-    name: {
-        type: String,
-        required: [true, "Please provide a name"],
-    },
-    createdAt: {
-        localString:{
-            type: String,
-            required:true
-        },
-        timestamp:{
-            type: Number,
-            required:true
-        }
-    },
-});
-
-module.exports = mongoose.model('User', UserSchema);
+module.exports = {
+    tableName: "users",
+    schema: {
+        id: "INT AUTO_INCREMENT PRIMARY KEY",
+        name: "VARCHAR(255) NOT NULL",
+        email: "VARCHAR(255) UNIQUE NOT NULL",
+        created_at: "TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+    }
+};
