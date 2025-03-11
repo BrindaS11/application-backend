@@ -29,7 +29,7 @@ async function updateSchema() {
                 continue;
             }
 
-            const [existingTables] = await connection.execute("SHOW TABLES LIKE ?", [model.tableName]);
+            const [existingTables] = await connection.execute(`SHOW TABLES LIKE '${model.tableName}'`);
 
             if (existingTables.length === 0) {
                 // Create table if it doesn't exist
