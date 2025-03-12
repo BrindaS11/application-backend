@@ -2,18 +2,23 @@ const db = require('../database/connection'); // Assuming you have a db.js file 
 
 // Add a new user
 const addUser = async (req, res) => {
-    const { name, email, password } = req.body;
-    if (!name || !email || !password) {
-        return res.status(400).json({ message: "All fields are required" });
+    const data = req.body;  // Capture all incoming data dynamically
+    const keys = Object.keys(data);
+    const values = Object.values(data);
+
+    if (keys.length === 0) {
+        return res.status(400).json({ message: "At least one field is required" });
     }
-    
+
     try {
-        const query = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
-        await db.execute(query, [name, email, password]);
-        res.status(201).json({ message: "User added successfully" });
+        const placeholders = keys.map(() => "?").join(", ");
+        const query = `INSERT INTO users (${keys.join(", ")}) VALUES (${placeholders})`;
+
+        await db.execute(query, values);
+        res.status(201).json({ message: "User added successfully", data });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Server error" });
+        console.error("Error inserting data:", error);
+        res.status(500).json({ message: "Server error", error: error.message });
     }
 };
 
