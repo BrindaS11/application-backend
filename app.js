@@ -39,7 +39,7 @@ app.use('/api/v1/app/address', addressRouter);
 app.use('/api/v1/admin', isAdmin, adminRouter);
 app.use('/', indexRouter);
 
-// error handler
+// error handlers
 app.use(error)
 
 module.exports = app;
