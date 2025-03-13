@@ -7,6 +7,7 @@ module.exports = {
         mobile: "VARCHAR(255) UNIQUE NOT NULL",
         gender: "VARCHAR(255)",
         status: "VARCHAR(255)",
+        dob: "DATE",
         created_at: "TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
     }
 };
