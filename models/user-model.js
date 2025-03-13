@@ -6,7 +6,7 @@ module.exports = {
         email: "VARCHAR(255) UNIQUE NOT NULL",
         mobile: "VARCHAR(255) UNIQUE NOT NULL",
         gender: "VARCHAR(255)",
-        status:  "VARCHAR(255)",
+        status: "VARCHAR(255)",
         created_at: "TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
     }
 };
